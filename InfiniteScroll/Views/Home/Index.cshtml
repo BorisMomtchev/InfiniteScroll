@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Scroll Demo";
+}
+
+<style type="text/css">
+ 
+	div.list-chunk {
+		padding-bottom: 1px ;
+		}
+ 
+	div.list-item {
+		border: 4px solid #E0E0E0 ;
+		margin: 0px 0px 13px 0px ;
+		padding: 10px 10px 10px 10px ;
+		}
+ 
+	div.list-item a.thumbnail {
+		float: left ;
+		height: 150px ;
+		margin: 0px 15px 10px 0px ;
+		width: 100px ;
+		}
+ 
+	div.list-item a.thumbnail img {
+		border: 1px solid #999999 ;
+		display: block ;
+		}
+ 
+	div.list-item h4 {
+		font-size: 18px ;
+		margin: 0px 0px 12px 0px ;
+		}
+ 
+	div.list-item div.offset {
+		border-top: 1px solid #CCCCCC ;
+		clear: both ;
+		font-size: 11px ;
+		padding-top: 4px ;
+		}
+ 
+</style>
+
+<b>Bidirectional Infinite Scroll With jQuery, AJAX & MVC</b><br/>
+(based on the great job done by Ben Nadel)
+<br/><br/>
+Inspect the DOM to see that only a limited number of div class="list-chunk" are loaded;<br/>
+Elements are being removed and added dynamically to the DOM as the user scrolls up and down.
+<hr/><br/>
+
+
+<div id="container">
+	<!-- Content will be loaded here dynamically. -->
+</div> 
+ 
+
+<!--
+	This is the tempalte that will be used when adding the
+	list items to the DOM. It contains two different variable
+	place-holders:
+ 
+	${src} : The source of the image.
+	${offset} : The offset of the record.
+-->
+
+<script src="@Url.Content("~/Scripts/InfiniteScroll.js")" type="text/javascript"></script>
+<script id="list-item-template" type="application/template">
+ 
+	<div class="list-item"> 
+		<a href="./${src}" target="_blank" class="thumbnail">
+			<img src="./thumbs/${src}" width="100" height="150" />
+		</a>
+ 
+		<div class="details"> 
+			<h4>
+				${src}
+			</h4>
+ 
+			<p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                laboris nisi ut aliquip ex ea commodo consequat.
+			</p>
+		</div>
+ 
+		<div class="offset">
+			Offset: ${offset}
+		</div>
+	</div>
+ 
+</script>
